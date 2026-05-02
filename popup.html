@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SlashFill</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+
+<!-- ── Main view ─────────────────────────────────────────────────────────── -->
+<div class="main-view" id="mainView">
+
+  <div class="header">
+    <div class="logo">
+      <div class="logo-mark">/</div>
+      <span class="logo-name">SlashFill</span>
+      <span class="count-pill" id="countBadge">0</span>
+    </div>
+    <button class="btn-add" id="btnAdd" title="Add command">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/>
+      </svg>
+      New
+    </button>
+  </div>
+
+  <div class="search-wrap">
+    <svg class="search-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+      <circle cx="7" cy="7" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/>
+    </svg>
+    <input class="search-input" id="searchInput" type="text" placeholder="Search commands…" autocomplete="off" spellcheck="false">
+  </div>
+
+  <div class="list-wrap" id="listWrap">
+    <!-- populated by JS -->
+  </div>
+
+  <div class="footer">
+    <span class="footer-tip">Type <kbd>/command</kbd> in any text field to insert</span>
+  </div>
+
+</div>
+
+<!-- ── Form view ─────────────────────────────────────────────────────────── -->
+<div class="form-view" id="formView">
+
+  <div class="form-header">
+    <button class="btn-back" id="btnBack" title="Back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="10 3 4 8 10 13"/>
+      </svg>
+    </button>
+    <span class="form-title" id="formTitle">New Command</span>
+  </div>
+
+  <div class="form-body">
+    <div class="field-group">
+      <label class="field-label" for="keyInput">Slash command</label>
+      <div class="field-key-wrap">
+        <span class="key-prefix">/</span>
+        <input class="field-input" id="keyInput" type="text" placeholder="github" autocomplete="off" spellcheck="false">
+      </div>
+      <span class="error-msg" id="keyError">Command key is required and can only contain letters, numbers, and underscores.</span>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label" for="valInput">Value to insert</label>
+      <textarea class="field-textarea" id="valInput" rows="4" placeholder="https://github.com/yourname&#10;or any text, link, bio…"></textarea>
+      <span class="error-msg" id="valError">Value cannot be empty.</span>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button class="btn-cancel" id="btnCancel">Cancel</button>
+    <button class="btn-save" id="btnSave">Save Command</button>
+  </div>
+
+</div>
+
+<script src="popup.js"></script>
+</body>
+</html>

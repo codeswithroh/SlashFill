@@ -1,0 +1,4 @@
+.gstack/
+.vercel/
+store-assets/
+*.DS_Store

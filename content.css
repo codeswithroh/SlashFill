@@ -1,0 +1,250 @@
+#slashfill-dropdown {
+  position: fixed !important;
+  z-index: 2147483647 !important;
+  min-width: 260px !important;
+  max-width: 400px !important;
+  background: #141212 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px !important;
+  box-shadow:
+    0 0 0 1px rgba(161, 255, 98, 0.08),
+    0 8px 40px rgba(0, 0, 0, 0.7),
+    0 2px 10px rgba(0, 0, 0, 0.5) !important;
+  overflow: hidden !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-size: 13px !important;
+  letter-spacing: -0.01em !important;
+  -webkit-font-smoothing: antialiased !important;
+  opacity: 0;
+  transform: translateY(-5px) scale(0.97);
+  transition: opacity 0.14s cubic-bezier(0.22,1,0.36,1), transform 0.14s cubic-bezier(0.22,1,0.36,1);
+  pointer-events: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#slashfill-dropdown.sf-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+#slashfill-dropdown .sf-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 9px 12px !important;
+  cursor: pointer !important;
+  transition: background 0.08s ease !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+  position: relative !important;
+  margin: 0 !important;
+}
+
+#slashfill-dropdown .sf-item:last-of-type {
+  border-bottom: none !important;
+}
+
+#slashfill-dropdown .sf-item.sf-selected {
+  background: rgba(161, 255, 98, 0.08) !important;
+}
+
+#slashfill-dropdown .sf-item.sf-selected .sf-key {
+  color: #111 !important;
+  background: #a1ff62 !important;
+  border-color: #a1ff62 !important;
+}
+
+#slashfill-dropdown .sf-item.sf-selected .sf-val {
+  color: #d8f5c2 !important;
+}
+
+#slashfill-dropdown .sf-item:hover:not(.sf-selected) {
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+#slashfill-dropdown .sf-key {
+  flex-shrink: 0 !important;
+  font-family: 'DM Mono', 'SF Mono', 'Fira Code', ui-monospace, monospace !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  color: #a1ff62 !important;
+  background: rgba(161, 255, 98, 0.08) !important;
+  border: 1px solid rgba(161, 255, 98, 0.14) !important;
+  padding: 2px 8px !important;
+  border-radius: 100px !important;
+  letter-spacing: 0 !important;
+  transition: background 0.08s, color 0.08s, border-color 0.08s !important;
+  white-space: nowrap !important;
+}
+
+#slashfill-dropdown .sf-val {
+  flex: 1 !important;
+  color: #6e6c6c !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  font-size: 12.5px !important;
+  letter-spacing: -0.005em !important;
+}
+
+#slashfill-dropdown .sf-hint {
+  padding: 6px 12px !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+  color: #3a3838 !important;
+  font-size: 10.5px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  font-family: 'DM Sans', -apple-system, sans-serif !important;
+  margin: 0 !important;
+}
+
+#slashfill-dropdown .sf-hint kbd {
+  display: inline-block !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  border-radius: 4px !important;
+  padding: 1px 4px !important;
+  font-size: 10px !important;
+  font-family: inherit !important;
+  color: #5a5858 !important;
+  line-height: 1.4 !important;
+}
+
+/* ── Save-from-context-menu modal ─────────────────────────────────────────── */
+#slashfill-save-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.14s ease;
+  backdrop-filter: blur(2px);
+}
+
+#slashfill-save-overlay.sfm-visible {
+  opacity: 1;
+}
+
+#slashfill-save-modal {
+  background: #141212 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 14px !important;
+  box-shadow:
+    0 0 0 1px rgba(161, 255, 98, 0.08),
+    0 20px 60px rgba(0, 0, 0, 0.8) !important;
+  padding: 20px !important;
+  width: 320px !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  transform: translateY(6px) scale(0.97);
+  transition: transform 0.14s cubic-bezier(0.22, 1, 0.36, 1);
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+#slashfill-save-overlay.sfm-visible #slashfill-save-modal {
+  transform: translateY(0) scale(1);
+}
+
+.sfm-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e8e6e6;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+
+.sfm-preview {
+  font-size: 12px;
+  color: #6e6c6c;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.005em;
+}
+
+.sfm-input-row {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.1s;
+}
+
+.sfm-input-row:focus-within {
+  border-color: rgba(161, 255, 98, 0.4);
+}
+
+.sfm-prefix {
+  padding: 0 4px 0 12px;
+  font-family: 'DM Mono', 'SF Mono', ui-monospace, monospace;
+  font-size: 14px;
+  font-weight: 500;
+  color: #a1ff62;
+  user-select: none;
+}
+
+.sfm-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 10px 12px 10px 2px;
+  font-family: 'DM Mono', 'SF Mono', ui-monospace, monospace;
+  font-size: 13px;
+  color: #e8e6e6;
+  letter-spacing: -0.01em;
+  caret-color: #a1ff62;
+}
+
+.sfm-input::placeholder {
+  color: #3a3838;
+}
+
+.sfm-input.sfm-error {
+  color: #ff6b6b;
+}
+
+.sfm-error-msg {
+  font-size: 11px;
+  color: #ff6b6b;
+  margin-top: 6px;
+  display: none;
+}
+
+.sfm-error-msg.sfm-error-visible {
+  display: block;
+}
+
+.sfm-hint {
+  margin-top: 12px;
+  color: #3a3838;
+  font-size: 10.5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sfm-hint kbd {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 4px;
+  padding: 1px 4px;
+  font-size: 10px;
+  font-family: inherit;
+  color: #5a5858;
+  line-height: 1.4;
+}
